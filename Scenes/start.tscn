@@ -1,50 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq4cvsq0yy700"]
+[gd_scene load_steps=7 format=3 uid="uid://bgspbahcelgdu"]
 
-[ext_resource type="Script" uid="uid://bjii1rwnowrr5" path="res://Scripts/character_movement.gd" id="1_3bxa3"]
+[ext_resource type="Script" path="res://Scripts/character_movement.gd" id="1_3bxa3"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ewcy1"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bk35t"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_jaeev"]
-sky_material = SubResource("ProceduralSkyMaterial_ewcy1")
+[sub_resource type="Sky" id="Sky_3bxa3"]
+sky_material = SubResource("ProceduralSkyMaterial_bk35t")
 
-[sub_resource type="Environment" id="Environment_u80x2"]
+[sub_resource type="Environment" id="Environment_r48yj"]
 background_mode = 2
-sky = SubResource("Sky_jaeev")
+sky = SubResource("Sky_3bxa3")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ewcy1"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r48yj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaeev"]
-albedo_color = Color(0.826498, 0.204916, 0.286905, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bxa3"]
+albedo_color = Color(0.849916, 0.169667, 0.481984, 1)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_u80x2")
+environment = SubResource("Environment_r48yj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ground" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.489685, 0)
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 size = Vector3(10, 1, 10)
-
-[node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57653, 11.795)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_3bxa3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
-shape = SubResource("CapsuleShape3D_ewcy1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r48yj")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(1, 2, 1)
-material = SubResource("StandardMaterial3D_jaeev")
+material = SubResource("StandardMaterial3D_3bxa3")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.339707, 0.940531, 0, -0.940531, 0.339707, 0, 6.43553, 1.12927)
